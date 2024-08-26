@@ -28,25 +28,25 @@ const getAllEmployees = async () => {
   return result.rows;
 };
 
-
+//this function will add a department to the database
 const addDepartment = async (name) => {
   await pool.query('INSERT INTO department (name) VALUES ($1)', [name]);
 };
 
+//this function will add a role to the database
 const addRole = async (title, salary, department_id) => {
   await pool.query('INSERT INTO role (title, salary, department_id) VALUES ($1, $2, $3)', [title, salary, department_id]);
 };
 
+//this function will add an employee to the database
 const addEmployee = async (first_name, last_name, role_id, manager_id) => {
   await pool.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES ($1, $2, $3, $4)', [first_name, last_name, role_id, manager_id]);
 };
 
+//this function will update the role of an employee
 const update_answers = async (employee_id, role_id) => {
   await pool.query('UPDATE employee SET role_id = $1 WHERE id = $2', [role_id, employee_id]);
 }
-// Functions to add and update entries
-
-// (implement as needed)
 
 module.exports = {
   getAllDepartments,
@@ -56,5 +56,5 @@ module.exports = {
   addRole,
   addEmployee,
   update_answers,
-  // Add more functions here
+  
 };
